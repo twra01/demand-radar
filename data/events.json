@@ -2838,40 +2838,6 @@
    "conf": "확인됨"
   },
   {
-   "id": 89,
-   "region": "일본",
-   "name": "2026 WBC TOKYO",
-   "kind": "스포츠",
-   "area": "도쿄",
-   "venue": "도쿄돔",
-   "start": "2026-03-05",
-   "end": "2026-03-09",
-   "size": 55000,
-   "interest": "높음",
-   "foreign": "",
-   "impact": "20개국",
-   "note": "2026 월드베이스볼 클래식",
-   "city": "도쿄",
-   "tier": "A",
-   "nroutes": 3,
-   "origins": [
-    "ICN",
-    "TAE",
-    "PUS"
-   ],
-   "stars": 4.0,
-   "score": {
-    "size": 23.2,
-    "interest": 25,
-    "fit": 20,
-    "dur": 10
-   },
-   "lock": false,
-   "pct": 78.2,
-   "sizeKnown": true,
-   "conf": "확인됨"
-  },
-  {
    "id": 90,
    "region": "일본",
    "name": "FOODEX JAPAN",
@@ -7530,38 +7496,6 @@
    },
    "lock": false,
    "pct": 79.7,
-   "sizeKnown": true,
-   "conf": "확인됨"
-  },
-  {
-   "id": 227,
-   "region": "유럽·대양주·미주",
-   "name": "Ambiente Frankfurt(소비재 전시회)",
-   "kind": "박람회",
-   "area": "독일",
-   "venue": "프랑크푸르트",
-   "start": "2026-02-06",
-   "end": "2026-02-10",
-   "size": 140000,
-   "interest": "높음",
-   "foreign": "",
-   "impact": "전세계",
-   "note": "세계 최대 규모 소비재 전문 무역 박람회",
-   "city": "프랑크푸르트",
-   "tier": "A",
-   "nroutes": 1,
-   "origins": [
-    "ICN"
-   ],
-   "stars": 4.0,
-   "score": {
-    "size": 28.6,
-    "interest": 25,
-    "fit": 18,
-    "dur": 10
-   },
-   "lock": false,
-   "pct": 81.6,
    "sizeKnown": true,
    "conf": "확인됨"
   },
