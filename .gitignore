@@ -2,3 +2,6 @@ CLAUDE.md
 .claude/
 __pycache__/
 
+*.xlsx
+*.xls
+

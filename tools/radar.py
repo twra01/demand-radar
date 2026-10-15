@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""취항지 행사·수요 레이더 갱신 도구.
+"""취항지 수요 레이더 갱신 도구.
   python3 tools/radar.py check   # 검증 + 별점 재계산 결과 요약(파일 변경 없음)
   python3 tools/radar.py build   # data/*.json을 재계산해 index.html 갱신(DATA, CAL 교체)
 행사는 data/events.json 의 events 배열에 추가하고, 휴일·시즌은 data/calendar.json 에 추가한 뒤 build 한다."""
@@ -80,6 +80,9 @@ def build():
     p = ROOT/'index.html'; s = p.read_text(encoding='utf-8')
     m = re.search(r'const DATA = (\{.*?\});\n', s, re.S); s = s[:m.start(1)]+json.dumps(d,ensure_ascii=False)+s[m.end(1):]
     m = re.search(r'const CAL = (\[.*?\]);\n', s, re.S); s = s[:m.start(1)]+json.dumps(c,ensure_ascii=False)+s[m.end(1):]
+    lf = ROOT/'data/loadfactor.json'                       # 탑승률 실적(tools/lf_build.py가 만든 노선·월별 합계)
+    if lf.exists():
+        m = re.search(r'const LF = (\{.*?\});\n', s, re.S); s = s[:m.start(1)]+lf.read_text(encoding='utf-8').strip()+s[m.end(1):]
     p.write_text(s,encoding='utf-8'); return d, warn
 if __name__ == '__main__':
     cmd = sys.argv[1] if len(sys.argv)>1 else 'check'
