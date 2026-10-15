@@ -949,7 +949,7 @@ function renderLF(){
   const head=P.some(p=>p[mon-1]!=null)?ys.map((y,k)=>P[k][mon-1]!=null?`${y}년 ${lfPct(P[k][mon-1])}`:'').filter(Boolean).join(' · '):'';
   const per=ys.map((y,k)=>`<div class="lfy"><b>${y}년 ${mon}월</b> ${lfPct(P[k][mon-1])} <span>${lfDevTxt(D[k],.02)}</span></div>`).join('');
   lfRaw.main=`<details class="lfd" id="lf-main"><summary><span class="lfs-n">1</span><span class="lfs-b"><span class="lfs-t">${mon}월 과거 탑승률 · ${esc(label)}</span><span class="lfs-k">${head||'직전 2개년 같은 달 비교'}</span></span><span class="lfs-a"></span></summary>
-  <p class="sub"><b>${lfDirName[lfS.dir]} 기준.</b> ${Y}년 ${mon}월을 앞두고, 과거 2개년(${ys[0]}·${ys[1]}년) 같은 달에 실제로 어땠는지 보여 줍니다. "연평균 대비"는 같은 해 월평균 탑승률과의 차이(그 해 안에서의 상대 위치)이며, 한국 출·도착 전 항공사 실적(양방향 합산)입니다. 월 합계라 며칠짜리 사건은 묻힐 수 있고, 증편·감편에도 영향을 받습니다.${LF.partial.length?' '+esc(LF.partial[0])+'은 월 일부만 반영된 잠정치라 뺐습니다.':''}</p>
+  <p class="sub"><b>${lfDirName[lfS.dir]} 기준</b> · 과거 2개년(${ys[0]}·${ys[1]}년) ${mon}월 실적입니다${LF.partial.length?` (${esc(LF.partial[0])}은 잠정치라 제외했습니다)`:''}.<br>“연평균 대비”는 같은 해 월평균과의 차이입니다. 월 합계라 며칠짜리 사건은 묻히고, 증편·감편 영향도 받습니다.</p>
   <div class="lfdir" role="group" aria-label="방향">${['all','out','in'].map(d=>`<button type="button" data-d="${d}" aria-pressed="${lfS.dir===d}">${{all:'전체',out:'한국발',in:'현지발'}[d]}</button>`).join('')}</div><div class="lfsum">${per}<div class="lfy"><b>판단</b> ${lfVerdict(D[0],D[1],.02)}</div></div>
   <div class="lfkey">${ys.map((y,k)=>`<span><i class="${k?'yb':'ya'}"></i>${y}년</span>`).join('')}<span>(강조 = ${mon}월)</span></div>${lfChart(ys.map((y,k)=>({cls:k?'yb':'ya',y,pts:P[k]})),mon,label)}
   ${lfIO(rows,ys.map(y=>y+'년 '+mon+'월'),ys.map(y=>[{y:+y,m:mon}]))}<h3>노선별 과거 비교 <small>행을 누르면 그 노선의 월별 그래프가 펼쳐집니다</small></h3>
