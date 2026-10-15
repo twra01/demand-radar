@@ -460,6 +460,29 @@ nav.pages .pg[aria-selected="true"] span{color:var(--ink2)}
 @media (max-width:560px){.ins-g{width:100%;border-left:0;padding-left:0;margin-top:2px}}
 .lfd .mid,.ins-p .mid{color:var(--ink2)}.ins-p td small{color:var(--ink2);font-size:11.5px}.ins-p th small{font-weight:400}
 .calnote{margin:8px 2px 0;font-size:11px;text-align:right;color:var(--ink2);opacity:.85}
+
+/* 월·국가 선택(슬라이서) 상단 고정 */
+.cal-sticky{position:sticky;top:0;z-index:30;background:var(--bg);padding:6px 0 4px;margin:0 0 6px;box-shadow:0 8px 8px -9px rgba(0,0,0,.4)}
+.cal-sticky .cal-nav{margin-bottom:6px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin}
+.cal-sticky .cal-nav button.mb{flex:none;padding:5px 13px;font-size:13.5px}
+.cal-sticky .filters{margin-bottom:0;padding:6px 10px}
+@media (max-width:760px){.cal-sticky .frow{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin}.cal-sticky .chip,.cal-sticky .frow .fl{flex:none}}
+
+
+#months{display:none}
+#f-month .chip small{margin-left:3px;font-size:11px;opacity:.75}
+
+/* 행사 필터 고정 줄 */
+.evs{position:fixed;top:0;left:0;right:0;z-index:40;background:var(--bg);border-bottom:1px solid var(--line);box-shadow:0 8px 10px -9px rgba(0,0,0,.45);transform:translateY(-115%);transition:transform .18s ease;visibility:hidden}
+.evs.on{transform:none;visibility:visible}
+.evs .in{max-width:1120px;margin:0 auto;padding:6px 16px;display:flex;gap:10px;align-items:center}
+.evs button{flex:none;border:1px solid var(--accent);background:var(--a-bg);color:var(--a-ink);border-radius:999px;padding:5px 14px;font-weight:700;font-size:13.5px;cursor:pointer}
+.evs button b{font-weight:700}
+.evs .car::after{content:" \25BE"}.evs button[aria-expanded="true"] .car::after{content:" \25B4"}
+#evs-sum{flex:1;min-width:0;font-size:13px;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.evs input{flex:0 0 170px;min-width:0;padding:5px 12px;border:1px solid var(--line);border-radius:999px;background:var(--panel);color:var(--ink);font:inherit;font-size:13px}
+#evf-wrap.float .filters{position:fixed;top:46px;left:50%;transform:translateX(-50%);width:min(1088px,calc(100vw - 32px));max-height:calc(100vh - 62px);overflow:auto;z-index:39;box-shadow:0 14px 28px -10px rgba(0,0,0,.45);border-color:var(--accent)}
+@media (max-width:640px){.evs .in{padding:6px 10px;gap:8px}.evs input{flex-basis:92px}#evf-wrap.float .filters{width:calc(100vw - 16px)}}
 </style>
 </head>
 <body data-page="events">
@@ -509,6 +532,7 @@ nav.pages .pg[aria-selected="true"] span{color:var(--ink2)}
     <div class="spot" id="spot"></div>
     <div class="months" id="months" aria-label="월별 행사 수"></div>
 
+    <div id="evf-wrap">
     <div class="filters">
       <div class="frow">
         <span class="fl">기간</span>
@@ -516,6 +540,7 @@ nav.pages .pg[aria-selected="true"] span{color:var(--ink2)}
         <label class="chk"><input type="checkbox" id="past"> 종료된 행사도 보기</label>
         <input type="search" id="q" placeholder="행사명, 도시, 장소 검색" aria-label="검색">
       </div>
+      <div class="frow" id="f-month"><span class="fl">월</span></div>
       <div class="frow" id="f-region"><span class="fl">권역</span></div>
       <div class="frow" id="f-kind"><span class="fl">종류</span></div>
       <div class="frow" id="f-tier"><span class="fl">취항 연관</span></div>
@@ -527,6 +552,7 @@ nav.pages .pg[aria-selected="true"] span{color:var(--ink2)}
           <option value="3.5">★ 3.5 이상</option><option value="4">★ 4 이상</option><option value="4.5">★ 4.5 이상</option><option value="5">★ 5</option>
         </select>
       </div>
+    </div>
     </div>
 
     <div class="result-bar">
@@ -577,8 +603,10 @@ nav.pages .pg[aria-selected="true"] span{color:var(--ink2)}
         <li><b>항목을 누르면</b> 직전 2개년 같은 달 탑승률(한국발·현지발)과 비교됩니다. 탑승률은 한국 출·도착 전 항공사 실적입니다(TW 단독 아님)</li>
       </ul>
     </div></div>
+    <div class="cal-sticky">
     <div class="cal-nav" id="cal-months" role="group" aria-label="월 선택"></div>
     <div class="filters"><div class="frow" id="cal-country"><span class="fl">국가</span></div></div>
+    </div>
     <div class="lf ins-wrap" id="cal-lf"></div><div id="cal-extra"></div>
     <div class="cal-detail" id="cal-detail" hidden></div>
     <div class="seasons" id="cal-seasons"></div>
@@ -588,6 +616,8 @@ nav.pages .pg[aria-selected="true"] span{color:var(--ink2)}
 
   </section>
   </div><!-- /page-demand -->
+
+  <div class="evs" id="evs"><div class="in"><button type="button" id="evs-btn" aria-expanded="false" aria-controls="evf-wrap">필터 <b id="evs-n"></b><span class="car" aria-hidden="true"></span></button><span id="evs-sum"></span><input id="evs-q" type="search" placeholder="검색" aria-label="행사 검색"></div></div>
 
   <footer id="foot"></footer>
 </div>
@@ -1016,6 +1046,49 @@ function drawIns(){
   lfTable();
 }
 const _renderCal=renderCal; renderCal=function(){ _renderCal(); renderLF(); renderExtra(); };
+
+
+/* 월 선택: 큰 월 막대 대신 필터의 '월' 한 줄(행사 수 표시) */
+(function(){
+  const box=document.getElementById('f-month'); if(!box) return;
+  function draw(){
+    box.querySelectorAll('.chip').forEach(c=>c.remove());
+    const mk=(label,on,fn,dis,title)=>{ const b=document.createElement('button'); b.type='button'; b.className='chip'; b.setAttribute('aria-pressed',on); b.innerHTML=label; if(dis){ b.disabled=true; b.style.opacity='.5'; b.style.cursor='default'; } else b.onclick=fn; if(title) b.title=title; box.appendChild(b); };
+    mk('전체',!state.month,()=>{ state.month=null; render(); });
+    monthList().forEach(k=>{ const [y,m]=k.split('-'); const last=new Date(+y,+m,0).getDate(), a=k+'-01', b=k+'-'+String(last).padStart(2,'0');
+      if(k>covMonth){ mk(`${+m}월 <small>미수록</small>`,false,null,true,'자료 미수록'); return; }
+      const n=EV.filter(e=>base(e,true)&&e.start<=b&&e.end>=a).length;
+      mk(`${y!=String(today.getFullYear())?y.slice(2)+'년 ':''}${+m}월 <small>${n}</small>`,state.month===k,()=>{ state.month=state.month===k?null:k; render(); }); });
+  }
+  const _r=render; render=function(){ _r(); draw(); };
+})();
+
+/* 행사 필터: 내려가면 얇은 고정 줄로 바뀌고, 눌러서 기존 칩 필터를 펼침 */
+(function(){
+  const strip=document.getElementById('evs'), btn=document.getElementById('evs-btn'), sumEl=document.getElementById('evs-sum'), nEl=document.getElementById('evs-n'), q=document.getElementById('evs-q'), wrap=document.getElementById('evf-wrap');
+  if(!strip||!wrap) return;
+  const ml=k=>{ const [y,m]=k.split('-'); return (y!=String(today.getFullYear())?y.slice(2)+'년 ':'')+(+m)+'월'; };
+  function upd(){
+    const parts=[]; if(state.month) parts.push(ml(state.month));
+    [state.region,state.kind,state.tier,state.origin].forEach((s,i)=>s.forEach(v=>parts.push(i===2?TIER[v]:i===3?(ORIGIN_NAME[v]||v):v)));
+    if(state.minstar>0) parts.push('★'+state.minstar+'+'); if(state.showPast) parts.push('종료 포함');
+    nEl.textContent=parts.length?'('+parts.length+')':''; sumEl.textContent=parts.length?parts.join(' · '):'조건 없음';
+    if(document.activeElement!==q && q.value!==state.q) q.value=state.q;
+  }
+  function setFloat(on){ if(on){ wrap.style.height=wrap.offsetHeight+'px'; wrap.classList.add('float'); } else { wrap.classList.remove('float'); wrap.style.height=''; }
+    btn.setAttribute('aria-expanded',on?'true':'false'); }
+  btn.onclick=e=>{ e.stopPropagation(); setFloat(!wrap.classList.contains('float')); };
+  document.addEventListener('click',e=>{ if(wrap.classList.contains('float')&&!e.target.closest('#evf-wrap')&&!e.target.closest('#evs')) setFloat(false); },true);
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') setFloat(false); });
+  q.oninput=()=>{ state.q=q.value; const main=document.getElementById('q'); if(main) main.value=state.q; render(); };
+  const _r=render; render=function(){ _r(); upd(); };
+  function vis(){
+    const pe=document.getElementById('page-events'), te=document.getElementById('tab-events');
+    const on=!!pe&&!pe.hidden&&!!te&&!te.hidden&&wrap.getBoundingClientRect().bottom<0&&document.getElementById('list').getBoundingClientRect().bottom>90;
+    strip.classList.toggle('on',on); if(!on&&wrap.classList.contains('float')) setFloat(false);
+  }
+  let tick=false; window.addEventListener('scroll',()=>{ if(tick) return; tick=true; requestAnimationFrame(()=>{ tick=false; vis(); }); },{passive:true}); window.addEventListener('resize',vis);
+})();
 renderRoutes();  render(); renderCal();
 </script>
 </body>
