@@ -855,8 +855,8 @@ const UPD = (DATA.updated||'2026-10-14');
 (function(){const w=EV.filter(e=>e.end>=todayISO&&e.start<=end6);
   const k=[[w.length,'6개월 내 행사'],[w.filter(e=>e.tier==='A').length,'취항지 직접 연관'],[w.filter(e=>e.stars>=4).length,'별 4개 이상']];
   document.getElementById('kpis').innerHTML=k.map(([n,l])=>`<div class="kpi"><b>${n}</b><span>${l}</span></div>`).join('');})();
-document.getElementById('updtop').innerHTML='최종 업데이트 '+UPD.replace(/-/g,'.')+'<small>(매주 월요일 정기 업데이트 예정)</small>';
-document.getElementById('foot').innerHTML = `<p class="upd">최종 업데이트 ${UPD.replace(/-/g,'.')} · 이후에도 계속 갱신됩니다.</p>
+document.getElementById('updtop').innerHTML='최근 업데이트 '+UPD.replace(/-/g,'.')+'<small>(매주 월요일 정기 업데이트 예정)</small>';
+document.getElementById('foot').innerHTML = `<p class="upd">최근 업데이트 ${UPD.replace(/-/g,'.')} · 이후에도 계속 갱신됩니다.</p>
 <dl class="fd fp-ev">
 <dt>유의</dt><dd>온라인 검색을 토대로 작성되어 실제와 다소 차이가 있을 수 있습니다. 관람객 수와 외국인 방문 비율은 추정치입니다.</dd>
 <dt>확인한 자료</dt><dd>공연 예매·일정 사이트, 박람회·전시 일정 데이터베이스(EventsEye 등), 마라톤·축제 공식 페이지, 언론 보도. 공식 확인 전 정보는 “확인 필요”로 표시했습니다.</dd>
