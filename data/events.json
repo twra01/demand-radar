@@ -1148,7 +1148,7 @@
    "area": "서울",
    "venue": "서울숲 일대",
    "start": "2026-05-01",
-   "end": "2026-10-31",
+   "end": "2026-10-27",
    "size": 50000,
    "interest": "중간",
    "foreign": "",
@@ -1168,7 +1168,8 @@
    "lock": false,
    "pct": 34.0,
    "sizeKnown": true,
-   "conf": "확인됨"
+   "conf": "확인됨",
+   "source": "https://mediahub.seoul.go.kr/archives/2018050"
   },
   {
    "id": 38,
@@ -1693,7 +1694,8 @@
    "pct": 69.2,
    "sizeKnown": true,
    "tour": "빅뱅",
-   "conf": "확인됨"
+   "conf": "확인됨",
+   "source": "https://www.complex.com/music/a/alex-ocho/bigbang-2026-world-tour-dates-cities"
   },
   {
    "id": 55,
@@ -1910,7 +1912,8 @@
    "lock": false,
    "pct": 66.7,
    "sizeKnown": true,
-   "conf": "확인됨"
+   "conf": "확인됨",
+   "source": "https://www.busan.go.kr/busaninseoul/deptpart02/1757171"
   },
   {
    "id": 62,
@@ -1945,7 +1948,8 @@
    "lock": false,
    "pct": 65.7,
    "sizeKnown": true,
-   "conf": "확인됨"
+   "conf": "확인됨",
+   "source": "https://www.mydaily.co.kr/page/view/2026081810570602929"
   },
   {
    "id": 63,
@@ -1977,7 +1981,8 @@
    "lock": false,
    "pct": 56.2,
    "sizeKnown": true,
-   "conf": "확인됨"
+   "conf": "확인됨",
+   "source": "https://www.busan.go.kr/nbincruit/1728997"
   },
   {
    "id": 64,
@@ -2009,7 +2014,8 @@
    "lock": false,
    "pct": 73.5,
    "sizeKnown": true,
-   "conf": "확인됨"
+   "conf": "확인됨",
+   "source": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=11935"
   },
   {
    "id": 65,
@@ -2041,7 +2047,8 @@
    "lock": false,
    "pct": 83.7,
    "sizeKnown": true,
-   "conf": "확인됨"
+   "conf": "확인됨",
+   "source": "https://www.invenglobal.com/articles/26572/g-star-2026-floor-map-and-key-content-revealed"
   },
   {
    "id": 66,
@@ -4112,7 +4119,8 @@
    "lock": false,
    "pct": 72.2,
    "sizeKnown": true,
-   "conf": "확인됨"
+   "conf": "확인됨",
+   "source": "https://ceatec.com/en/application/outline/"
   },
   {
    "id": 127,
@@ -4146,7 +4154,8 @@
    "lock": false,
    "pct": 58.7,
    "sizeKnown": true,
-   "conf": "확인됨"
+   "conf": "확인됨",
+   "source": "https://www.japan-mobility-show.com/en/press_release/2026/0827/docs/Exhibition_and_Programs_Overview_en.pdf"
   },
   {
    "id": 128,
@@ -4180,7 +4189,8 @@
    "lock": false,
    "pct": 79.2,
    "sizeKnown": true,
-   "conf": "확인됨"
+   "conf": "확인됨",
+   "source": "https://www.japan-it.jp/autumn/en-gb.html"
   },
   {
    "id": 129,
@@ -4218,7 +4228,8 @@
    "sizeKnown": true,
    "cap": 55000,
    "tour": "YOASOBI",
-   "conf": "확인됨"
+   "conf": "확인됨",
+   "source": "https://lp.p.pia.jp/event/music/457528/index.html"
   },
   {
    "id": 130,
@@ -4226,14 +4237,14 @@
    "name": "요아소비(YOASOBI) 콘서트",
    "kind": "콘서트",
    "area": "삿포로",
-   "venue": "삿포로돔",
-   "start": "2026-11-07",
-   "end": "2026-11-08",
+   "venue": "삿포로돔(대와하우스 프리미스트돔)",
+   "start": "2026-11-14",
+   "end": "2026-11-15",
    "size": 80000,
    "interest": "중간",
    "foreign": "",
    "impact": "일본, 한국",
-   "note": "일본 인기 가수로 한국 팬들 원정 관람 예상",
+   "note": "일본 인기 가수로 한국 팬들 원정 관람 예상 · 일정 정정(11/14~15, 출처마다 15일만 표기하기도 함)",
    "city": "삿포로",
    "tier": "A",
    "nroutes": 2,
@@ -4253,7 +4264,8 @@
    "sizeKnown": true,
    "cap": 54000,
    "tour": "YOASOBI",
-   "conf": "확인됨"
+   "conf": "확인됨",
+   "source": "https://lp.p.pia.jp/event/music/457528/index.html"
   },
   {
    "id": 131,
@@ -4291,7 +4303,8 @@
    "sizeKnown": true,
    "cap": 55000,
    "tour": "빅뱅",
-   "conf": "확인됨"
+   "conf": "확인됨",
+   "source": "https://www.complex.com/music/a/alex-ocho/bigbang-2026-world-tour-dates-cities"
   },
   {
    "id": 132,
@@ -4329,7 +4342,8 @@
    "sizeKnown": true,
    "cap": 50000,
    "tour": "YOASOBI",
-   "conf": "확인됨"
+   "conf": "확인됨",
+   "source": "https://lp.p.pia.jp/event/music/457528/index.html"
   },
   {
    "id": 133,
@@ -5737,7 +5751,8 @@
    "lock": false,
    "pct": 79.7,
    "sizeKnown": true,
-   "conf": "확인됨"
+   "conf": "확인됨",
+   "source": "https://www.wtatennis.com/news/4588416/wuhan-2026-dates-draws-prize-money-and-everything-you-need-to-know"
   },
   {
    "id": 174,
@@ -5775,7 +5790,8 @@
    "cap": 40000,
    "venueEst": true,
    "tour": "빅뱅",
-   "conf": "확인됨"
+   "conf": "확인됨",
+   "source": "https://www.complex.com/music/a/alex-ocho/bigbang-2026-world-tour-dates-cities"
   },
   {
    "id": 175,
@@ -5808,7 +5824,8 @@
    "lock": false,
    "pct": 68.6,
    "sizeKnown": true,
-   "conf": "확인됨"
+   "conf": "확인됨",
+   "source": "https://www.showsbee.com/fairs/HK-Electronics-Fair-AE.html"
   },
   {
    "id": 176,
@@ -5841,7 +5858,8 @@
    "lock": false,
    "pct": 75.5,
    "sizeKnown": true,
-   "conf": "확인됨"
+   "conf": "확인됨",
+   "source": "https://newshub.medianet.com.au/2026/10/hktb-presents-hong-kong-wine-dine-festival-and-hong-kong-gourmet-month-under-the-theme-taste-the-worlds-best/175656/"
   },
   {
    "id": 177,
@@ -5876,7 +5894,8 @@
    "lock": false,
    "pct": 79.9,
    "sizeKnown": true,
-   "conf": "확인됨"
+   "conf": "확인됨",
+   "source": "https://cantonfair.net/event/2232-taipei-international-travel-fair-itf"
   },
   {
    "id": 178,
@@ -5912,7 +5931,8 @@
    "cap": 50000,
    "venueEst": true,
    "tour": "빅뱅",
-   "conf": "확인됨"
+   "conf": "확인됨",
+   "source": "https://www.complex.com/music/a/alex-ocho/bigbang-2026-world-tour-dates-cities"
   },
   {
    "id": 179,
@@ -5944,7 +5964,8 @@
    "lock": false,
    "pct": 80.7,
    "sizeKnown": true,
-   "conf": "확인됨"
+   "conf": "확인됨",
+   "source": "https://www.pitdebrief.com/?p=116111"
   },
   {
    "id": 180,
@@ -5983,7 +6004,8 @@
    "cap": 55000,
    "venueEst": true,
    "tour": "BTS",
-   "conf": "확인됨"
+   "conf": "확인됨",
+   "source": "https://www.bandwagon.asia/articles/bts-announce-4-night-singapore-national-stadium-stop-as-part-of-arirang-world-tour"
   },
   {
    "id": 182,
@@ -7061,7 +7083,8 @@
    "lock": false,
    "pct": 63.4,
    "sizeKnown": true,
-   "conf": "확인됨"
+   "conf": "확인됨",
+   "source": "https://rri.co.id/en/business/2218678/indonesia-targets-usd-175-billion-at-trade-expo-indonesia-2026"
   },
   {
    "id": 214,
@@ -7097,7 +7120,8 @@
    "cap": 55000,
    "venueEst": true,
    "tour": "빅뱅",
-   "conf": "확인됨"
+   "conf": "확인됨",
+   "source": "https://www.complex.com/music/a/alex-ocho/bigbang-2026-world-tour-dates-cities"
   },
   {
    "id": 215,
@@ -7130,7 +7154,8 @@
    "lock": false,
    "pct": 58.2,
    "sizeKnown": true,
-   "conf": "확인됨"
+   "conf": "확인됨",
+   "source": "https://www.itb-asia.com/about-the-show/venue-and-travel-information/"
   },
   {
    "id": 216,
@@ -7166,7 +7191,8 @@
    "cap": 52000,
    "venueEst": true,
    "tour": "빅뱅",
-   "conf": "확인됨"
+   "conf": "확인됨",
+   "source": "https://www.complex.com/music/a/alex-ocho/bigbang-2026-world-tour-dates-cities"
   },
   {
    "id": 217,
@@ -7199,7 +7225,8 @@
    "lock": false,
    "pct": 68.7,
    "sizeKnown": true,
-   "conf": "확인됨"
+   "conf": "확인됨",
+   "source": "https://www.ft.lk/financial-services/Singapore-FinTech-Festival-2026-in-November-to-bring-global-leaders-together-for-Insights-to-Action/42-794478"
   },
   {
    "id": 218,
@@ -7236,7 +7263,8 @@
    "cap": 52000,
    "venueEst": true,
    "tour": "BTS",
-   "conf": "확인됨"
+   "conf": "확인됨",
+   "source": "https://www.bandwagon.asia/articles/bts-announce-4-night-singapore-national-stadium-stop-as-part-of-arirang-world-tour"
   },
   {
    "id": 219,
@@ -7273,7 +7301,8 @@
    "cap": 55000,
    "venueEst": true,
    "tour": "BTS",
-   "conf": "확인됨"
+   "conf": "확인됨",
+   "source": "https://www.bandwagon.asia/articles/bts-announce-4-night-singapore-national-stadium-stop-as-part-of-arirang-world-tour"
   },
   {
    "id": 220,
@@ -7309,7 +7338,8 @@
    "cap": 77000,
    "venueEst": true,
    "tour": "BTS",
-   "conf": "확인됨"
+   "conf": "확인됨",
+   "source": "https://kpopofficial.com/schedule/asia/"
   },
   {
    "id": 221,
@@ -8657,7 +8687,8 @@
    "pct": 50.9,
    "sizeKnown": true,
    "tour": "빅뱅",
-   "conf": "확인됨"
+   "conf": "확인됨",
+   "source": "https://www.complex.com/music/a/alex-ocho/bigbang-2026-world-tour-dates-cities"
   },
   {
    "id": 265,
@@ -8847,7 +8878,8 @@
    "lock": false,
    "pct": 89.0,
    "sizeKnown": true,
-   "conf": "확인됨"
+   "conf": "확인됨",
+   "source": "https://mondial.paris/infos-pratiques"
   },
   {
    "id": 271,
@@ -8879,7 +8911,8 @@
    "lock": false,
    "pct": 86.0,
    "sizeKnown": true,
-   "conf": "확인됨"
+   "conf": "확인됨",
+   "source": "https://www.sialparis.com/en/pratical-info/dates-venue-opening-times"
   },
   {
    "id": 272,
@@ -8911,7 +8944,8 @@
    "lock": false,
    "pct": 54.9,
    "sizeKnown": true,
-   "conf": "확인됨"
+   "conf": "확인됨",
+   "source": "https://www.austrade.gov.au/en/events/international-mining-and-resources-conference-2026"
   },
   {
    "id": 273,
@@ -8941,7 +8975,8 @@
    "lock": false,
    "pct": 35.7,
    "sizeKnown": true,
-   "conf": "확인됨"
+   "conf": "확인됨",
+   "source": "https://www.arteche.com/en/events/all-energy-australia-0"
   },
   {
    "id": 274,
@@ -8976,7 +9011,8 @@
    "cap": 80000,
    "venueEst": true,
    "tour": "빅뱅",
-   "conf": "확인됨"
+   "conf": "확인됨",
+   "source": "https://www.complex.com/music/a/alex-ocho/bigbang-2026-world-tour-dates-cities"
   },
   {
    "id": 275,
@@ -9008,7 +9044,8 @@
    "lock": false,
    "pct": 60.2,
    "sizeKnown": true,
-   "conf": "확인됨"
+   "conf": "확인됨",
+   "source": "https://build-up.ec.europa.eu/en/news-and-events/events/smart-city-expo-world-congress-2026"
   },
   {
    "id": 276,
@@ -9038,7 +9075,8 @@
    "lock": false,
    "pct": 71.0,
    "sizeKnown": true,
-   "conf": "확인됨"
+   "conf": "확인됨",
+   "source": "https://www.milanofree.it/milano/eventi/eicma-2026-a-milano-date-biglietti-padiglioni-e-guida-pratica-per-visitare-la-fiera-delle-moto-a-rho.html"
   },
   {
    "id": 277,
@@ -9070,7 +9108,8 @@
    "lock": false,
    "pct": 56.2,
    "sizeKnown": true,
-   "conf": "확인됨"
+   "conf": "확인됨",
+   "source": "https://www.failteireland.ie/en/events/ibtm-world-2026"
   },
   {
    "id": 278,
@@ -15045,6 +15084,80 @@
     "dur": 7.5
    },
    "pct": 67.5
+  },
+  {
+   "region": "일본",
+   "name": "요아소비(YOASOBI) 콘서트",
+   "kind": "콘서트",
+   "venue": "반테린돔 나고야",
+   "start": "2026-11-07",
+   "end": "2026-11-08",
+   "interest": "중간",
+   "foreign": "",
+   "impact": "일본, 한국",
+   "note": "일본 인기 가수로 한국 팬들 원정 관람 예상",
+   "city": "나고야",
+   "tier": "A",
+   "lock": false,
+   "tour": "YOASOBI",
+   "conf": "확인됨",
+   "source": "https://lp.p.pia.jp/event/music/457528/index.html",
+   "added": "2026-10-15",
+   "id": 445,
+   "area": "나고야",
+   "origins": [
+    "ICN"
+   ],
+   "nroutes": 1,
+   "cap": 49000,
+   "size": 98000,
+   "est": true,
+   "stars": 3.0,
+   "score": {
+    "size": 26.5,
+    "interest": 15,
+    "fit": 18,
+    "dur": 5
+   },
+   "pct": 64.5
+  },
+  {
+   "region": "일본",
+   "name": "요아소비(YOASOBI) 콘서트",
+   "kind": "콘서트",
+   "venue": "도쿄돔",
+   "start": "2026-12-05",
+   "end": "2026-12-06",
+   "interest": "중간",
+   "foreign": "",
+   "impact": "일본, 한국",
+   "note": "일본 인기 가수로 한국 팬들 원정 관람 예상",
+   "city": "도쿄",
+   "tier": "A",
+   "lock": false,
+   "tour": "YOASOBI",
+   "conf": "확인됨",
+   "source": "https://lp.p.pia.jp/event/music/457528/index.html",
+   "added": "2026-10-15",
+   "id": 446,
+   "area": "도쿄",
+   "origins": [
+    "ICN",
+    "TAE",
+    "PUS"
+   ],
+   "nroutes": 3,
+   "cap": 55000,
+   "size": 110000,
+   "est": true,
+   "stars": 3.5,
+   "score": {
+    "size": 27.2,
+    "interest": 15,
+    "fit": 20,
+    "dur": 5
+   },
+   "pct": 67.2
   }
  ],
  "routes": [
