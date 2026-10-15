@@ -83,6 +83,10 @@ def build():
     lf = ROOT/'data/loadfactor.json'                       # 탑승률 실적(tools/lf_build.py가 만든 노선·월별 합계)
     if lf.exists():
         m = re.search(r'const LF = (\{.*?\});\n', s, re.S); s = s[:m.start(1)]+lf.read_text(encoding='utf-8').strip()+s[m.end(1):]
+    fx = ROOT/'data/fx.json'                               # 환율 월평균(tools/fx_build.py, 참고용)
+    if fx.exists():
+        m = re.search(r'const FX = (\{.*?\});\n', s, re.S)
+        if m: s = s[:m.start(1)]+fx.read_text(encoding='utf-8').strip()+s[m.end(1):]
     p.write_text(s,encoding='utf-8'); return d, warn
 if __name__ == '__main__':
     cmd = sys.argv[1] if len(sys.argv)>1 else 'check'
