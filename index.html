@@ -534,6 +534,17 @@ nav.pages .pg[aria-selected="false"]:hover{background:var(--panel);transform:non
 .fxn{margin:8px 0 4px;padding:7px 10px;border:1px dashed var(--line);border-radius:6px;font-size:13px;color:var(--ink2)}.fxn b{color:var(--ink)}.fxn small{font-size:11.5px;opacity:.85}
 .cal-detail .lfbox{border:1px solid var(--line);border-radius:6px;padding:8px 10px;margin:8px 0}.cal-detail .lfbox .lfsum{border:0;padding:0}.cal-detail .lfbox .sub{margin:6px 0 0}
 .cal-detail .fxn{border-style:solid;margin:8px 0}
+
+/* 눌러 볼 수 있다는 작은 단서: 상승·하락(▲▼)과 헷갈리지 않게 그린 화살괄호(chevron) */
+.row:not(.grow) .nm::after,.seasons .sr .sl small::after,.chev{content:"";display:inline-block;width:5px;height:5px;margin-left:8px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);vertical-align:2px}
+.row:not(.grow) .nm::after{color:var(--ink2);opacity:.4}
+.row:not(.grow)[aria-expanded="true"] .nm::after{transform:rotate(-135deg);vertical-align:-1px}
+.row:not(.grow):hover .nm::after{opacity:.9;color:var(--focus)}
+.seasons .sr .sl small::after{color:var(--focus);opacity:.55}
+.seasons .sr:hover .sl small::after{opacity:1}
+.seasons .sr:hover{background:var(--a-bg);border-radius:6px}
+.chev{margin-left:7px;vertical-align:1px}
+.chev.up{transform:rotate(-135deg);vertical-align:-1px}
 </style>
 </head>
 <body data-page="events">
@@ -768,7 +779,7 @@ function renderList(){
       <span class="c-stars">${starHTML(mx)}<div class="sc">최고 ${mx.toFixed(1)}</div></span>
       <span class="c-date date">${md(s0)} ~ ${md(e0)}<small>${g.length}개 공연</small></span>
       <span class="c-name"><span class="nm">${esc(t)} 투어</span><div class="sub">${esc(cities.join(' · '))}</div></span>
-      <span class="c-city"><span class="tag tB">투어 묶음</span><span class="sub">${open?'접기 ▲':'펼치기 ▼'}</span></span>
+      <span class="c-city"><span class="tag tB">투어 묶음</span><span class="sub">${open?'접기 <i class="chev up"></i>':'펼치기 <i class="chev"></i>'}</span></span>
       <span class="c-size sz">${tot?fmtN(tot):'미상'}<small>명 합계(추정 포함)</small></span></button>${open?`<ul class="kids">${gs.map(rowHTML).join('')}</ul>`:''}</li>`;};
   const gm={}; if(state.group) list.forEach(e=>{ if(e.tour&&e.kind==='콘서트') (gm[e.tour]=gm[e.tour]||[]).push(e); });
   const seenT=new Set(), items=[];
