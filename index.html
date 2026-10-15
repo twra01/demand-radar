@@ -502,6 +502,32 @@ nav.pages .pg[aria-selected="true"] span{color:var(--ink2)}
 .seasons .sr{grid-template-columns:minmax(0,54%) minmax(0,1fr)}
 .seasons .sl{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 @media (max-width:760px){.seasons .sr{grid-template-columns:minmax(0,1fr)}}
+.ins-p[data-p="acc"] table td:nth-child(2),.ins-p[data-p="acc"] table th:nth-child(2){white-space:nowrap;text-align:center}.ins-p[data-p="acc"] table td:nth-child(4){min-width:150px}
+
+/* 선택되지 않은 탭을 '눌러 볼 수 있는 버튼'으로 부각 */
+nav.pages .pg-ev{--pgr:215,157,143}nav.pages .pg-dm{--pgr:196,183,150}
+nav.pages .pg[aria-selected="false"]{background:var(--panel);border:1.5px solid var(--line);border-bottom:4px solid var(--pgc);box-shadow:0 2px 10px rgba(0,0,0,.08);animation:pgpulse 1.6s ease-in-out 3}
+nav.pages .pg[aria-selected="false"] b{color:var(--ink)}
+nav.pages .pg[aria-selected="false"] b::after{content:"자세히 보기";margin-left:9px;font-size:11px;font-weight:700;background:var(--pgc);color:#2b2926;border-radius:999px;padding:2px 9px;vertical-align:2px;letter-spacing:.02em}
+nav.pages .pg[aria-selected="false"]:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(0,0,0,.14)}
+@keyframes pgpulse{0%,100%{box-shadow:0 2px 10px rgba(0,0,0,.08),0 0 0 0 rgba(var(--pgr),0)}50%{box-shadow:0 2px 10px rgba(0,0,0,.08),0 0 0 7px rgba(var(--pgr),.38)}}
+@media (prefers-reduced-motion:reduce){nav.pages .pg[aria-selected="false"]{animation:none}}
+@media (max-width:640px){nav.pages .pg[aria-selected="false"] b::after{display:block;margin:3px 0 0;width:max-content;font-size:10.5px;padding:1px 8px}}
+
+/* 서류철(폴더) 느낌: 선택한 탭이 아래 '서류' 테두리와 이어진다 */
+:root{--paper:color-mix(in srgb,var(--panel) 55%,var(--bg))}
+body[data-page="demand"]{--paper:color-mix(in srgb,var(--panel) 55%,var(--bg))}
+nav.pages{align-items:flex-end;gap:6px;border-bottom:0;margin:0}
+nav.pages .pg{border-radius:14px 14px 0 0;margin-bottom:0}
+nav.pages .pg[aria-selected="false"]{margin-top:10px;margin-bottom:0;border:1.5px solid var(--line);border-bottom:0;border-top:3px solid var(--pgc);background:var(--bg);box-shadow:none;padding-top:8px;padding-bottom:9px}
+nav.pages .pg[aria-selected="true"]{background:var(--paper);border:1.5px solid var(--line);border-top:4px solid var(--pgc);border-bottom:0;margin-bottom:-1.5px;position:relative;z-index:2;box-shadow:none;padding-top:11px;padding-bottom:12px}
+nav.pages .pg[aria-selected="false"]:hover{background:var(--panel);transform:none;box-shadow:0 -3px 10px rgba(0,0,0,.08)}
+.page{background:var(--paper);border:1.5px solid var(--line);border-top:4px solid var(--pgcur,var(--accent));border-radius:0 16px 16px 16px;padding:18px 18px 22px;box-shadow:0 8px 22px -14px rgba(0,0,0,.35);position:relative;z-index:1}
+#page-events{--pgcur:#d79d8f}#page-demand{--pgcur:#c4b796}
+.cal-sticky{background:var(--paper)}
+@media (max-width:640px){.page{padding:12px 10px 16px;border-radius:0 12px 12px 12px}}
+#page-events>.spot{margin:0 0 14px}
+.vseg{margin-top:2px}
 </style>
 </head>
 <body data-page="events">
@@ -540,6 +566,7 @@ nav.pages .pg[aria-selected="true"] span{color:var(--ink2)}
     </div>
     <div class="kpis" id="kpis"></div>
   </div>
+  <div class="spot" id="spot"></div>
   <div class="vseg" role="group" aria-label="보기 방식">
     <button type="button" data-view="list" aria-pressed="true">행사 목록</button>
     <button type="button" data-view="routes" aria-pressed="false">노선별 보기</button>
@@ -548,7 +575,6 @@ nav.pages .pg[aria-selected="true"] span{color:var(--ink2)}
   <!-- 행사 일정 -->
   <section id="tab-events">
     <div class="notice" id="notice" hidden></div>
-    <div class="spot" id="spot"></div>
     <div class="months" id="months" aria-label="월별 행사 수"></div>
 
     <div id="evf-wrap">
