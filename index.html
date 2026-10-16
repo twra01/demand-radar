@@ -546,6 +546,21 @@ nav.pages .pg[aria-selected="false"]:hover{background:var(--panel);transform:non
 .chev{margin-left:7px;vertical-align:1px}
 .chev.up{transform:rotate(-135deg);vertical-align:-1px}
 .crit-n{margin:8px 0 2px;padding-left:18px;font-size:12.5px;color:var(--ink2);line-height:1.6}.crit-n li{margin:1px 0}
+
+/* 항목 상세 패널: 제목 있는 구역 + 카드 */
+.cal-detail .lfbox{border:0;padding:0;margin:4px 0 8px}
+.cal-detail .lfbox .lfsum{display:flex;flex-wrap:wrap;gap:8px;border:0;padding:0}
+.cal-detail .lfy,.cal-detail .fxc{flex:1 1 190px;border:1px solid var(--line);border-radius:8px;padding:8px 12px;background:var(--panel);display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px}
+.cal-detail .lfy>b,.cal-detail .fxc>span{font-size:12px;font-weight:400;color:var(--ink2);flex:0 0 100%}
+.cal-detail .lfy>b{font-weight:400}
+.cal-detail .fxc>b{font-size:19px}
+.cal-detail .fxc em{font-style:normal;font-size:13px;color:var(--ink2)}
+.cal-detail .fxc small{font-size:11px;color:var(--ink2);opacity:.85}
+.cal-detail .fxn{border:0;padding:0;margin:4px 0 8px;background:none;font-size:13px}
+.cal-detail .fxcards{display:flex;flex-wrap:wrap;gap:8px}
+.cal-detail .lfbox .sub{margin:8px 0 0}
+.cal-detail .fxnote{margin:6px 0 0;font-size:11.5px;color:var(--ink2)}
+@media (max-width:640px){.cal-detail .lfy,.cal-detail .fxc{flex:1 1 calc(50% - 8px);padding:6px 10px}.cal-detail .fxc>b{font-size:17px}.cal-detail .lfy{flex-basis:100%}}
 </style>
 </head>
 <body data-page="events">
@@ -1043,7 +1058,10 @@ function fxBlock(c,W){
   const now=M[key(cy,cm)], prev=M[key(cy-1,cm)];
   const body=W.map((m,n)=>`${per(m)} <b>${f(A[n])}</b>`).join(' → ')+chg(A[0],A[1]);
   const cur=now!=null&&prev!=null?` · 최근 ${cy}.${String(cm).padStart(2,'0')} <b>${f(now)}</b>${chg(prev,now)} <small>(전년 동월 대비)</small>`:'';
-  return `<p class="fxn"><b>환율 참고</b> ${nm}: ${body}${cur}<br><small>원화 약세(환율↑)면 한국발 부담·현지발 유리 방향 · 영향은 미분석, 참고용(${cu.s||'유럽중앙은행'})</small></p>`;
+  const chg2=(a,b)=>(a==null||b==null)?'':`<em>${b>=a?'+':''}${((b/a-1)*100).toFixed(1)}%</em>`;
+  const cards=W.map((m,n)=>`<div class="fxc"><span>${per(m)}</span><b>${f(A[n])}</b>${n?chg2(A[0],A[1])+'<small>전년 대비</small>':''}</div>`).join('')
+    +(now!=null&&prev!=null?`<div class="fxc"><span>최근 ${cy}.${String(cm).padStart(2,'0')}</span><b>${f(now)}</b>${chg2(prev,now)}<small>전년 동월 대비</small></div>`:'');
+  return `<h3>환율 참고 <small>${nm} · 월평균 · ${cu.s||'유럽중앙은행'}</small></h3><div class="fxn"><div class="fxcards">${cards}</div><p class="fxnote">원화 약세(환율↑)면 한국발 부담·현지발 유리 방향 · 영향은 분석하지 않은 참고 수치</p></div>`;
 }
 function closeItem(){ const d=document.getElementById('cal-detail'); d.innerHTML=''; d.hidden=true; }
 function showItem(ci){
@@ -1058,7 +1076,7 @@ function showItem(ci){
   const sum=W.map((m,n)=>`<div class="lfy"><b>${per(m)}</b> ${lfPct(R[n].lf)} <span>${lfDevTxt(R[n].dev,th)}</span></div>`).join('');
   const hl=[...new Set(W[0].map(x=>x.m))], P=ks.map((k,n)=>({cls:n?'yb':'ya',y:String(+c.s.slice(0,4)-k),pts:lfAggS(rows,String(+c.s.slice(0,4)-k),dd)}));
   const rt=rows.map(r=>{ const S=W.map(m=>lfWin(i=>lfG(r,i,dd),y=>lfRowS(r,y,dd),m)); const w=S.reduce((a,x,n)=>a+(x.lf!=null?W[n].reduce((p,{y,m})=>{const i=lfIdx(String(y),m);return p+(i>=0&&!lfPart(i)?r.px[i]:0);},0):0),0); return {r,S,w}; }).filter(x=>x.w>0).sort((a,b)=>b.w-a.w).slice(0,8);
-  d.innerHTML=head+`<div class="lfbox"><div class="lfsum">${sum}</div><p class="sub"><b>${dd==='all'?'양방향 합산':lfDirName[dd]} 기준.</b> ${cmp} 월 합계라 날짜 단위 차이는 보이지 않으며, 같은 달 전체 값입니다.</p></div>${fxBlock(c,W)}<div class="lfkey">${ks.map((k,n)=>`<span><i class="${n?'yb':'ya'}"></i>${P[n].y}년</span>`).join('')}<span>(강조 = 해당 기간 월)</span></div>${lfChart(P,hl,c.c)}${lfIO(rows,W.map(per),W)}<h3>주요 노선 <small>같은 기간 · ${dd==='all'?'양방향':lfDirName[dd]} 기준</small></h3><div class="tbl-wrap"><table><thead><tr><th>노선</th>${W.map(m=>`<th class="num">${per(m)}</th>`).join('')}<th>판단</th></tr></thead><tbody>`+rt.map(({r,S})=>`<tr><td>${esc(r.r.replace('-','→'))} <small>${esc(r.city)}</small></td>${S.map(x=>`<td class="num">${lfPct(x.lf)}<br>${lfDevTxt(x.dev,.03)}</td>`).join('')}<td>${lfVerdict(S[0].dev,S[1].dev,.03)}</td></tr>`).join('')+'</tbody></table></div>';
+  d.innerHTML=head+`<h3>과거 탑승률 <small>${dd==='all'?'양방향 합산':lfDirName[dd]} 기준 · 직전 2개년 같은 기간</small></h3><div class="lfbox"><div class="lfsum">${sum}</div><p class="sub">${cmp} <small>월 합계 기준이라 날짜 단위 차이는 보이지 않습니다.</small></p></div>${fxBlock(c,W)}<h3>월별 추이 <small>같은 달 비교 · 강조 = 해당 기간 월</small></h3><div class="lfkey">${ks.map((k,n)=>`<span><i class="${n?'yb':'ya'}"></i>${P[n].y}년</span>`).join('')}</div>${lfChart(P,hl,c.c)}${lfIO(rows,W.map(per),W)}<h3>주요 노선 <small>같은 기간 · ${dd==='all'?'양방향':lfDirName[dd]} 기준</small></h3><div class="tbl-wrap"><table><thead><tr><th>노선</th>${W.map(m=>`<th class="num">${per(m)}</th>`).join('')}<th>판단</th></tr></thead><tbody>`+rt.map(({r,S})=>`<tr><td>${esc(r.r.replace('-','→'))} <small>${esc(r.city)}</small></td>${S.map(x=>`<td class="num">${lfPct(x.lf)}<br>${lfDevTxt(x.dev,.03)}</td>`).join('')}<td>${lfVerdict(S[0].dev,S[1].dev,.03)}</td></tr>`).join('')+'</tbody></table></div>';
   d.querySelector('.dx').onclick=closeItem; d.scrollIntoView({block:'nearest',behavior:'smooth'}); }
 (function(){ const t=document.getElementById('tab-cal'); t.addEventListener('click',e=>{const el=e.target.closest('[data-ci]'); if(el) showItem(+el.dataset.ci);}); t.addEventListener('keydown',e=>{ if((e.key==='Enter'||e.key===' ')&&e.target.matches('[data-ci]')){e.preventDefault(); showItem(+e.target.dataset.ci);} }); })();
 
