@@ -839,7 +839,7 @@ function renderRoutes(){
   document.getElementById('rtbody').innerHTML=rows.map(r=>{
     const open=state.ropen.has(r.dc);
     const evs=EV.filter(e=>e.tier==='A'&&e.city===r.dc&&e.end>=todayISO&&e.start<=end6).sort((a,b)=>a.start.localeCompare(b.start));
-    return `<tr class="rt" data-dc="${esc(r.dc)}" tabindex="0" aria-expanded="${open}"><td>${esc(r.cat)}</td><td><b>${esc(r.dc)}</b></td><td>${r.o.map(o=>ORIGIN_NAME[o]||o).join(', ')}</td><td>${evs.length}건 <span class="chev">${open?'▲':'▼'}</span></td></tr>`+
+    return `<tr class="rt" data-dc="${esc(r.dc)}" tabindex="0" aria-expanded="${open}"><td>${esc(r.cat)}</td><td><b>${esc(r.dc)}</b></td><td>${r.o.map(o=>ORIGIN_NAME[o]||o).join(', ')}</td><td>${evs.length}건 <i class="chev${open?' up':''}"></i></td></tr>`+
     (open?`<tr class="rt-d"><td colspan="4">${evs.length?evs.map(e=>`<div class="rl">${starHTML(e.stars)}<span class="rd">${dateText(e)}</span><span>${esc(e.name)}</span></div>`).join(''):'<span class="sub">6개월 내 등록된 행사가 없습니다</span>'}${lfCityNext(r.dc)}</td></tr>`:'');}).join('');
   document.querySelectorAll('#rtbody tr.rt').forEach(tr=>{const f=()=>{const d=tr.dataset.dc; state.ropen.has(d)?state.ropen.delete(d):state.ropen.add(d); renderRoutes();}; tr.onclick=f; tr.onkeydown=ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();f();}};});
   document.getElementById('rasof').textContent=(DATA.routesAsOf||'2026.10')+' 기준';
