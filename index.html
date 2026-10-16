@@ -563,6 +563,8 @@ nav.pages .pg[aria-selected="false"]:hover{background:var(--panel);transform:non
 @media (max-width:640px){.cal-detail .lfy,.cal-detail .fxc{flex:1 1 calc(50% - 8px);padding:6px 10px}.cal-detail .fxc>b{font-size:17px}.cal-detail .lfy{flex-basis:100%}}
 .accx{margin:6px 0 10px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--a-bg);font-size:13px;line-height:1.6}.accx p{margin:0 0 4px;font-weight:400;color:var(--ink)}.accx ul{margin:0;padding-left:18px;color:var(--ink2);font-size:12.5px}.accx li{margin:2px 0}.accx li b{color:var(--ink)}.accsum{margin-top:8px}
 .ph .lead .lnote{font-size:12.5px;opacity:.85;margin-top:2px}
+.accx p{word-break:keep-all}.accx .accx-t{display:block;margin-bottom:2px}.accx .ln{display:block}
+@media (max-width:760px){.accx .ln{display:inline}.accx .ln+.ln::before{content:" "}}
 </style>
 </head>
 <body data-page="events">
@@ -1129,7 +1131,7 @@ function renderExtra(){
     return x.kind==='same'?`<span class="up">✔ 예상(${ex})대로 2년 모두 ${ex}</span>`:x.kind==='opp'?`<span class="dn">✘ 예상(${ex})과 반대로 2년 모두 ${ac}</span>`:x.kind==='mixed'?'엇갈림 (한 해만 예상대로·반대)':'뚜렷한 차이 없음 (보통)'; };
   const dv=(x,c)=>{ if(!x) return '-'; const Y=+c.s.slice(0,4); return [2,1].map((k,i)=>`${Y-k} ${lab(x.R[i].dev)} <small>(${x.R[i].dev>=0?'+':''}${(x.R[i].dev*100).toFixed(1)}%p)</small>`).join('<br>'); };
   const accHTML=`<details class="lfd" id="lf-acc"><summary><span class="lfs-t">예상은 얼마나 맞았나</span><span class="lfs-k">${items.length?`예상대로 ${S} · 반대 ${Oo} (${cm}월 ${items.length}건 중)`:`${cm}월 항목 없음`}</span></summary>
-  <div class="accx"><p><b>예상 점검표</b> 달력의 강세·약세 예상이 실제로 맞았는지, 2024·2025년 같은 시기의 탑승률로 확인한 표입니다. 이 예상을 얼마나 믿고 참고할 수 있는지 가늠하는 보조 지표입니다. 항목 이름을 누르면 상세 비교가 열립니다.</p>
+  <div class="accx"><p><b class="accx-t">예상 점검표</b><span class="ln">달력의 강세·약세 예상이 실제로 맞았는지, 2024·2025년 같은 시기의 탑승률로 확인한 표입니다.</span><span class="ln">예상을 참고할 때 함께 보는 보조 지표이며, 항목 이름을 누르면 상세 비교가 열립니다.</span></p>
   <ul><li><b>과거 실제</b> 그 해 연평균보다 +2%p 이상 높으면 강세, -2%p 이하면 약세, 그 사이는 보통입니다.</li>
   <li><b>판단</b> ✔ 2년 모두 예상대로 = 신뢰도 높음 · 엇갈림 = 해에 따라 달랐음 · ✘ 2년 모두 반대 = 참고 시 유의 · 뚜렷한 차이 없음 = 탑승률에 큰 영향 없었음</li>
   <li>월 합계 기준이라 하루짜리 휴일의 효과는 희석될 수 있습니다.</li><li>이 점검 결과도 절대적인 기준은 아니며, 판매 시 참고 자료로 활용해 주세요.</li></ul></div>`+
