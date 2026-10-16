@@ -1075,7 +1075,7 @@ function showItem(ci){
   const W=ks.map(k=>lfWinMonths(c,k)), agg=rows.map(()=>0);
   const R=W.map(m=>lfWin(i=>lfAgg(rows,i,dd),y=>lfAggS(rows,y,dd),m));
   const th=.02, exp=c.t==='U'?1:c.t==='D'?-1:0, same=R.filter(r=>r.dev!=null&&exp*r.dev>=th).length, opp=R.filter(r=>r.dev!=null&&exp*r.dev<=-th).length;
-  let cmp=''; if(exp){ cmp=same==2?`<span class="up">✔ 과거 2년 모두 예상(${TYPE_TXT[c.t]})과 같은 흐름이었습니다.</span>`:opp==2?`<span class="dn">✘ 과거 2년 모두 예상(${TYPE_TXT[c.t]})과 반대였습니다. 예상을 다시 확인해 보세요.</span>`:same==1&&!opp?'과거에는 한 해만 예상과 같았습니다.':opp==1&&!same?'과거에는 한 해만 예상과 반대였습니다.':'과거에는 뚜렷한 차이가 없었습니다(연평균 수준).'; } else cmp='예상 방향이 "확인 필요"인 항목이라 과거 흐름만 참고용으로 보여 줍니다.';
+  let cmp=''; if(exp){ cmp=same==2?`<span class="up">✔ 과거 2년 모두 예상(${TYPE_TXT[c.t]})과 같은 흐름이었습니다.</span>`:opp==2?`<span class="dn">✘ 과거 2년 모두 예상(${TYPE_TXT[c.t]})과 반대였습니다. 해당 항목은 참고 시 유의해 주세요.</span>`:same==1&&!opp?'과거에는 한 해만 예상과 같았습니다.':opp==1&&!same?'과거에는 한 해만 예상과 반대였습니다.':'과거에는 뚜렷한 차이가 없었습니다(연평균 수준).'; } else cmp='예상 방향이 "확인 필요"인 항목이라 과거 흐름만 참고용으로 보여 줍니다.';
   const sum=W.map((m,n)=>`<div class="lfy"><b>${per(m)}</b> ${lfPct(R[n].lf)} <span>${lfDevTxt(R[n].dev,th)}</span></div>`).join('');
   const hl=[...new Set(W[0].map(x=>x.m))], P=ks.map((k,n)=>({cls:n?'yb':'ya',y:String(+c.s.slice(0,4)-k),pts:lfAggS(rows,String(+c.s.slice(0,4)-k),dd)}));
   const rt=rows.map(r=>{ const S=W.map(m=>lfWin(i=>lfG(r,i,dd),y=>lfRowS(r,y,dd),m)); const w=S.reduce((a,x,n)=>a+(x.lf!=null?W[n].reduce((p,{y,m})=>{const i=lfIdx(String(y),m);return p+(i>=0&&!lfPart(i)?r.px[i]:0);},0):0),0); return {r,S,w}; }).filter(x=>x.w>0).sort((a,b)=>b.w-a.w).slice(0,8);
