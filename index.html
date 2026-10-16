@@ -873,10 +873,13 @@ document.getElementById('past').onchange=e=>{state.showPast=e.target.checked; st
 document.getElementById('q').oninput=e=>{state.q=e.target.value.trim(); render(); };
 document.getElementById('minstar').onchange=e=>{state.minstar=+e.target.value; render();};
 document.querySelectorAll('.seg button').forEach(b=>b.onclick=()=>{state.sort=b.dataset.sort; render();});
+// 방문 집계(GoatCounter): 페이지 전환(행사 일정/노선별 보기/수요 달력)을 각각 한 번씩 센다. 개인 식별·쿠키 없음
+let _gcLast='', _gcTimer=0;
+function gcView(p){ clearTimeout(_gcTimer); _gcTimer=setTimeout(()=>{ if(p===_gcLast) return; const send=()=>{ try{ if(window.goatcounter&&window.goatcounter.count){ window.goatcounter.count({path:'/'+p, title:({events:'행사 일정',routes:'노선별 보기',demand:'수요 달력'})[p]||p}); _gcLast=p; } }catch(e){} }; if(window.goatcounter&&window.goatcounter.count) send(); else window.addEventListener('load',()=>setTimeout(send,300),{once:true}); },60); }
 function showPage(p,push){ ['events','demand'].forEach(k=>document.getElementById('page-'+k).hidden=k!==p);
   document.querySelectorAll('nav.pages .pg').forEach(b=>b.setAttribute('aria-selected',b.dataset.page===p)); document.body.dataset.page=p;
-  if(push!==false&&location.hash!=='#'+p) history.replaceState(null,'','#'+p); }
-function showView(v){ document.getElementById('tab-events').hidden=v!=='list'; document.getElementById('tab-routes').hidden=v!=='routes';
+  if(push!==false&&location.hash!=='#'+p) history.replaceState(null,'','#'+p); gcView(p); }
+function showView(v){ gcView(v==='routes'?'routes':'events'); document.getElementById('tab-events').hidden=v!=='list'; document.getElementById('tab-routes').hidden=v!=='routes';
   document.querySelectorAll('.vseg button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.view===v)); }
 document.querySelectorAll('nav.pages .pg').forEach(b=>b.onclick=()=>{ showPage(b.dataset.page); window.scrollTo({top:0}); });
 document.querySelectorAll('.vseg button').forEach(b=>b.onclick=()=>showView(b.dataset.view));
@@ -1206,5 +1209,6 @@ const _renderCal=renderCal; renderCal=function(){ _renderCal(); renderLF(); rend
 })();
 renderRoutes();  render(); renderCal();
 </script>
+<script data-goatcounter="https://twra01.goatcounter.com/count" data-goatcounter-settings='{"no_onload":true}' async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
