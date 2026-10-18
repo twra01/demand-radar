@@ -10,7 +10,11 @@
   "conf": "중간",
   "src": "https://vietnamguide.co.kr/%eb%b2%a0%ed%8a%b8%eb%82%a8-%ed%83%9c%ed%92%8d/",
   "hol": 0,
-  "lv": 1
+  "lv": 1,
+  "cities": [
+   "다낭",
+   "나트랑"
+  ]
  },
  {
   "s": "2026-10-15",
@@ -23,7 +27,10 @@
   "conf": "중간",
   "src": "https://asianews.network/?p=307121",
   "hol": 0,
-  "lv": 1
+  "lv": 1,
+  "cities": [
+   "방콕"
+  ]
  },
  {
   "s": "2026-10-15",
@@ -49,7 +56,10 @@
   "conf": "확정",
   "src": "https://thailand.prd.go.th/en/content/category/detail/id/48/iid/504658",
   "hol": 1,
-  "lv": 1
+  "lv": 1,
+  "cities": [
+   "방콕"
+  ]
  },
  {
   "s": "2026-10-17",
@@ -153,7 +163,10 @@
   "conf": "중간",
   "src": "https://vietnamguide.co.kr/푸꾸옥-날씨/",
   "hol": 0,
-  "lv": 1
+  "lv": 1,
+  "cities": [
+   "푸꾸옥"
+  ]
  },
  {
   "s": "2026-11-01",
@@ -166,7 +179,10 @@
   "conf": "중간",
   "src": "https://www.tripstore.kr/blog/%EB%B0%9C%EB%A6%AC-%EA%B1%B4%EA%B8%B0-%EC%9A%B0%EA%B8%B0-%EB%B9%84%EA%B5%90-%EC%8B%9C%EC%A6%8C%EB%B3%84-%EA%B0%80%EC%9D%B4%EB%93%9C",
   "hol": 0,
-  "lv": 1
+  "lv": 1,
+  "cities": [
+   "발리"
+  ]
  },
  {
   "s": "2026-11-01",
@@ -179,7 +195,10 @@
   "conf": "중간",
   "src": "https://www.aol.com/articles/indonesia-faces-greater-flood-risk-124027676.html",
   "hol": 0,
-  "lv": 1
+  "lv": 1,
+  "cities": [
+   "자카르타"
+  ]
  },
  {
   "s": "2026-11-01",
@@ -205,7 +224,10 @@
   "conf": "중간",
   "src": "https://www.tripstore.kr/blog/%EB%B0%A9%EC%BD%95-%EA%B1%B4%EA%B8%B0-%EC%9A%B0%EA%B8%B0-%EC%88%99%EC%86%8C-%EC%9C%84%EC%B9%98-%EA%B0%80%EC%9D%B4%EB%93%9C",
   "hol": 0,
-  "lv": 1
+  "lv": 1,
+  "cities": [
+   "방콕"
+  ]
  },
  {
   "s": "2026-11-03",
@@ -283,7 +305,10 @@
   "conf": "높음",
   "src": "https://www.officeholidays.com/countries/canada/2026",
   "hol": 1,
-  "lv": 1
+  "lv": 1,
+  "cities": [
+   "밴쿠버"
+  ]
  },
  {
   "s": "2026-11-11",
@@ -309,7 +334,10 @@
   "conf": "중간",
   "src": "https://www.tripstore.kr/blog/%EA%B0%80%EC%98%A4%EC%8A%9D-12%EC%9B%94-%EB%82%A0%EC%94%A8-%EA%B1%B4%EA%B8%B0-%EC%98%B7%EC%B0%A8%EB%A6%BC-%EB%AA%85%EC%86%8C",
   "hol": 0,
-  "lv": 1
+  "lv": 1,
+  "cities": [
+   "가오슝"
+  ]
  },
  {
   "s": "2026-11-15",
@@ -322,7 +350,11 @@
   "conf": "중간",
   "src": "",
   "hol": 0,
-  "lv": 2
+  "lv": 2,
+  "cities": [
+   "오사카",
+   "도쿄"
+  ]
  },
  {
   "s": "2026-11-19",
@@ -530,7 +562,10 @@
   "conf": "중간",
   "src": "",
   "hol": 0,
-  "lv": 2
+  "lv": 2,
+  "cities": [
+   "밴쿠버"
+  ]
  },
  {
   "s": "2026-12-19",
@@ -842,7 +877,11 @@
   "conf": "중간",
   "src": "https://www.tripstore.kr/blog/%EB%8B%A4%EB%82%AD-%EC%88%99%EC%86%8C-%EC%9C%84%EC%B9%98-%EA%B1%B4%EA%B8%B0-%EC%9A%B0%EA%B8%B0-%EB%82%A0%EC%94%A8-%EC%84%A0%ED%83%9D%EB%B2%95",
   "hol": 0,
-  "lv": 1
+  "lv": 1,
+  "cities": [
+   "다낭",
+   "나트랑"
+  ]
  },
  {
   "s": "2027-02-04",
@@ -881,7 +920,10 @@
   "conf": "중간",
   "src": "",
   "hol": 0,
-  "lv": 2
+  "lv": 2,
+  "cities": [
+   "삿포로"
+  ]
  },
  {
   "s": "2027-02-04",
@@ -1076,7 +1118,10 @@
   "conf": "높음",
   "src": "https://www.fair-point.com/en/blog/the-biggest-international-trade-fairs-in-march?id=62",
   "hol": 0,
-  "lv": 2
+  "lv": 2,
+  "cities": [
+   "바르셀로나"
+  ]
  },
  {
   "s": "2027-03-08",
@@ -1089,7 +1134,10 @@
   "conf": "높음",
   "src": "https://www.officeholidays.com/countries/indonesia/2027",
   "hol": 1,
-  "lv": 1
+  "lv": 1,
+  "cities": [
+   "발리"
+  ]
  },
  {
   "s": "2027-03-10",
@@ -1128,7 +1176,10 @@
   "conf": "낮음",
   "src": "https://elections.nsw.gov.au/bulletins/2027-nsw-state-election-bulletin-1",
   "hol": 0,
-  "lv": 1
+  "lv": 1,
+  "cities": [
+   "시드니"
+  ]
  },
  {
   "s": "2027-03-20",
@@ -1154,7 +1205,11 @@
   "conf": "중간",
   "src": "https://www.japan.travel/ko/see-and-do/cherry-blossom-forecast/",
   "hol": 0,
-  "lv": 3
+  "lv": 3,
+  "cities": [
+   "도쿄",
+   "오사카"
+  ]
  },
  {
   "s": "2027-03-25",
