@@ -1192,7 +1192,7 @@ function lfdChart(R,c){
     s+=`<text x="${X(k).toFixed(1)}" y="${H-B+17}" text-anchor="middle" style="font-size:11.5px${inn?';font-weight:700;fill:var(--ink)':''}">${dt.getUTCMonth()+1}/${dt.getUTCDate()}</text><text x="${X(k).toFixed(1)}" y="${H-B+31}" text-anchor="middle" style="font-size:10.5px;${mk?'fill:var(--accent);font-weight:700':'opacity:.75'}">${mk||WK[dt.getUTCDay()]}</text>`;
     if(mk) s+=`<line x1="${X(k).toFixed(1)}" x2="${X(k).toFixed(1)}" y1="${T-6}" y2="${H-B}" stroke="var(--accent)" stroke-width="1.4" stroke-dasharray="3 4" opacity=".8"/>`; }
   const segs=o=>{ const out=[]; let cur=[]; o.forEach((v,idx)=>{ if(v==null){ if(cur.length) out.push(cur); cur=[]; } else cur.push([X(idx-PAD),Y(v),idx-PAD,v]); }); if(cur.length) out.push(cur); return out; };
-  const showAll=len<=7;
+  const showAll=len<=3;
   pts.forEach((o,j)=>{ const last=j===pts.length-1, cls=R.length>1&&!last?'ya':'yb';
     segs(o).forEach(sg=>{ if(sg.length<2) return; const d=curve(sg);
       if(last) s+=`<path d="${d} L${sg[sg.length-1][0].toFixed(1)},${(H-B)} L${sg[0][0].toFixed(1)},${(H-B)} Z" fill="url(#${gid})" stroke="none" class="${cls}" style="color:var(--accent);stroke:none;stroke-dasharray:none"/>`;
