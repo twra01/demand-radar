@@ -87,6 +87,10 @@ def build():
     if fx.exists():
         m = re.search(r'const FX = (\{.*?\});\n', s, re.S)
         if m: s = s[:m.start(1)]+fx.read_text(encoding='utf-8').strip()+s[m.end(1):]
+    lfd = ROOT/'data/loadfactor_daily.json'                 # 국내선 일자별 탑승률(tools/lf_daily_build.py)
+    if lfd.exists():
+        m = re.search(r'const LFD = (\{.*?\});\n', s, re.S)
+        if m: s = s[:m.start(1)]+lfd.read_text(encoding='utf-8').strip()+s[m.end(1):]
     p.write_text(s,encoding='utf-8'); return d, warn
 if __name__ == '__main__':
     cmd = sys.argv[1] if len(sys.argv)>1 else 'check'
