@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """탑승률 엑셀(연도별) → data/loadfactor.json (노선별·월별 합계만 저장, 원본 행은 저장하지 않음).
   python tools/lf_build.py "24년 탑승률.xlsx" "25년 탑승률.xlsx" "26년 탑승률.xlsx"
+  python tools/lf_build.py --merge "10월 탑승률.xlsx"   # 새로 받은 달만 기존 json에 덮어써 합침(다 안 들어온 끝 날짜는 자동 제외, 월 일부면 잠정)
 엑셀 열: 년, 월, 노선, Bound, 국적사/외항사, 항공사코드, 운항편수, 공급석, 수송석, L/F ...
 노선은 양방향(Inbound+Outbound)·전 항공사를 합산한다. 'na'는 그 달 운항한 항공사 수, 'so'/'po'는 Outbound(한국 출발편) 공급석·수송석(Inbound = 전체 − Outbound)."""
 import sys, re, json, pathlib
@@ -32,8 +33,29 @@ KRSET = set(KR)
 def norm(route):
     r = re.sub(r'\s*V[.,]V\s*$', '', str(route).strip()); r = re.sub(r'V\.V$', '', r).strip()
     return r
-def main(paths):
+def trim_partial_days(df):
+    """월 끝쪽에서 행 수가 평소(앞 7일 중앙값)의 70% 미만인 날은 아직 다 안 들어온 날로 보고 뺀다."""
+    if '일' not in df.columns: return df, None
+    keep = df.copy(); keep['일'] = keep['일'].astype(int); cnt = keep.groupby('일').size(); last = int(cnt.index.max())
+    while last > 8 and cnt[last] < 0.7 * cnt[[d for d in cnt.index if d < last][-7:]].median(): last -= 1
+    return keep[keep['일'] <= last], last
+def merge_out(old, new):
+    """기존 data/loadfactor.json(old)에 새 엑셀로 만든 월(new)을 덮어써 합친다. 새 엑셀에 없는 노선의 그 달은 0."""
+    months = sorted(set(old['months']) | set(new['months'])); mi = {m: i for i, m in enumerate(months)}
+    rows = {}
+    for src in (old, new):
+        for x in src['routes']:
+            e = rows.setdefault(x['r'], {'r': x['r'], 'c': x['c'], 'city': x['city'], **{k: [0]*len(months) for k in ('fl','se','px','na','so','po')}})
+            for k in ('fl','se','px','na','so','po'):
+                for j, m in enumerate(src['months']):
+                    if src is new or m not in new['months']: e[k][mi[m]] = x[k][j]
+            if src is new: e['c'], e['city'] = x['c'], x['city']
+    routes = sorted(rows.values(), key=lambda x: -sum(x['px']))
+    return {'months': months, 'partial': new['partial'], 'routes': routes}
+def main(paths, merge=False):
     df = pd.concat([pd.read_excel(p) for p in paths], ignore_index=True)
+    last_day = None
+    if merge: df, last_day = trim_partial_days(df)
     df['월'] = df['월'].astype(int); df['ym'] = df['년'].astype(int).astype(str) + '-' + df['월'].astype(str).str.zfill(2)
     df['r'] = df['노선'].map(norm)
     months = sorted(df['ym'].unique()); mi = {m: i for i, m in enumerate(months)}
@@ -55,7 +77,12 @@ def main(paths):
     tot = [sum(x['se'][i] for x in routes) for i in range(len(months))]
     partial = [months[-1]] if len(months) > 3 and tot[-1] < 0.6 * sum(tot[-4:-1]) / 3 else []
     out = {'months': months, 'partial': partial, 'routes': routes}
+    if merge:
+        import calendar
+        y, m = (int(v) for v in months[-1].split('-')); partial = [months[-1]] if last_day and last_day < calendar.monthrange(y, m)[1] else []
+        out = merge_out(json.loads((ROOT / 'data/loadfactor.json').read_text(encoding='utf-8')), {'months': months, 'partial': partial, 'routes': routes}); months = out['months']; partial = out['partial']; routes = out['routes']
     (ROOT / 'data/loadfactor.json').write_text(json.dumps(out, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
     print(f'노선 {len(routes)}개 / 월 {months[0]}~{months[-1]} / 잠정 {partial} / 미분류 {len(unmapped)}개', unmapped)
 if __name__ == '__main__':
-    main(sys.argv[1:])
+    a = sys.argv[1:]; mg = '--merge' in a
+    main([x for x in a if x != '--merge'], mg)
