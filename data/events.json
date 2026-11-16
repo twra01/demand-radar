@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-10",
+ "updated": "2026-11-16",
  "events": [
   {
    "id": 0,
@@ -16121,6 +16121,69 @@
     "dur": 2.5
    },
    "pct": 27.5
+  },
+  {
+   "name": "캣츠아이(KATSEYE) 첫 단독 내한공연",
+   "kind": "콘서트",
+   "region": "국내",
+   "city": "서울",
+   "tier": "B",
+   "venue": "KSPO돔",
+   "start": "2027-02-04",
+   "end": "2027-02-04",
+   "interest": "중간",
+   "note": "THE WILDWORLD TOUR 아시아 일정(요코하마 1/27 → 마닐라·홍콩·서울·세부·싱가포르·방콕·타이베이). 일반 예매 11/12",
+   "source": "https://www.mydaily.co.kr/page/view/2026102918353833118",
+   "conf": "확인됨",
+   "added": "2026-11-16",
+   "id": 477,
+   "area": "서울",
+   "lock": false,
+   "foreign": "",
+   "impact": "",
+   "origins": [],
+   "nroutes": 0,
+   "cap": 15000,
+   "size": 15000,
+   "est": true,
+   "stars": 2.0,
+   "score": {
+    "size": 15.7,
+    "interest": 15,
+    "fit": 9,
+    "dur": 2.5
+   },
+   "pct": 42.2
+  },
+  {
+   "name": "2027 RESCENE CONCERT 'NOTES : BLOOMING' IN SEOUL",
+   "kind": "콘서트",
+   "region": "국내",
+   "city": "서울",
+   "tier": "B",
+   "venue": "올림픽공원 올림픽홀",
+   "start": "2027-02-19",
+   "end": "2027-02-21",
+   "interest": "낮음",
+   "note": "데뷔 후 첫 단독 콘서트. 12월 쿠팡플레이 앱 예매 예정",
+   "source": "https://www.newspim.com/news/view/20261111000548",
+   "conf": "확인됨",
+   "added": "2026-11-16",
+   "id": 478,
+   "area": "서울",
+   "lock": false,
+   "foreign": "",
+   "impact": "",
+   "origins": [],
+   "nroutes": 0,
+   "stars": 2.0,
+   "score": {
+    "size": null,
+    "interest": 5,
+    "fit": 9,
+    "dur": 7.5
+   },
+   "pct": 35.8
   }
  ],
  "routes": [

@@ -18,7 +18,7 @@ df['o'] = df['Leg'].str.split('-').str[0]; df['d'] = df['Leg'].str.split('-').st
 df = df[df['o'] != df['d']]
 start = df['date'].min().normalize(); end = df['date'].max().normalize()
 cnt = df.groupby('date').size()
-while len(cnt) > 8 and cnt.loc[:end].iloc[-1] < cnt.loc[:end].iloc[-8:-1].median() * 0.7: end = end - pd.Timedelta(days=1)   # 끝쪽 덜 들어온 날 제외
+while len(cnt) > 8 and cnt.loc[:end].iloc[-1] < cnt.loc[:end].iloc[-29:-1].median() * 0.7: end = end - pd.Timedelta(days=1)   # 끝쪽 덜 들어온 날 제외
 idx = pd.date_range(start, end, freq='D'); n = len(idx)
 df = df[df['date'] <= end]
 def arr(sub, col):

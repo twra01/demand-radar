@@ -34,11 +34,13 @@ def norm(route):
     r = re.sub(r'\s*V[.,]V\s*$', '', str(route).strip()); r = re.sub(r'V\.V$', '', r).strip()
     return r
 def trim_partial_days(df):
-    """월 끝쪽에서 행 수가 평소(앞 7일 중앙값)의 70% 미만인 날은 아직 다 안 들어온 날로 보고 뺀다."""
+    """맨 끝쪽에서 행 수가 평소(앞 28일 중앙값)의 70% 미만인 날은 아직 다 안 들어온 날로 보고 뺀다. 엑셀이 두 달에 걸쳐도 날짜(년·월·일) 기준으로 센다."""
     if '일' not in df.columns: return df, None
-    keep = df.copy(); keep['일'] = keep['일'].astype(int); cnt = keep.groupby('일').size(); last = int(cnt.index.max())
-    while last > 8 and cnt[last] < 0.7 * cnt[[d for d in cnt.index if d < last][-7:]].median(): last -= 1
-    return keep[keep['일'] <= last], last
+    keep = df.copy(); keep['일'] = keep['일'].astype(int)
+    keep['_d'] = pd.to_datetime(dict(year=keep['년'].astype(int), month=keep['월'].astype(int), day=keep['일']))
+    cnt = keep.groupby('_d').size().sort_index(); end = cnt.index.max()
+    while len(cnt) > 8 and cnt.loc[end] < 0.7 * cnt.loc[:end].iloc[-29:-1].median(): end -= pd.Timedelta(days=1)
+    return keep[keep['_d'] <= end].drop(columns='_d'), end.date()
 def merge_out(old, new):
     """기존 data/loadfactor.json(old)에 새 엑셀로 만든 월(new)을 덮어써 합친다. 새 엑셀에 없는 노선의 그 달은 0."""
     months = sorted(set(old['months']) | set(new['months'])); mi = {m: i for i, m in enumerate(months)}
@@ -79,7 +81,7 @@ def main(paths, merge=False):
     out = {'months': months, 'partial': partial, 'routes': routes}
     if merge:
         import calendar
-        y, m = (int(v) for v in months[-1].split('-')); partial = [months[-1]] if last_day and last_day < calendar.monthrange(y, m)[1] else []
+        y, m = (int(v) for v in months[-1].split('-')); partial = [months[-1]] if last_day and (last_day.year, last_day.month) == (y, m) and last_day.day < calendar.monthrange(y, m)[1] else []
         out = merge_out(json.loads((ROOT / 'data/loadfactor.json').read_text(encoding='utf-8')), {'months': months, 'partial': partial, 'routes': routes}); months = out['months']; partial = out['partial']; routes = out['routes']
     (ROOT / 'data/loadfactor.json').write_text(json.dumps(out, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
     print(f'노선 {len(routes)}개 / 월 {months[0]}~{months[-1]} / 잠정 {partial} / 미분류 {len(unmapped)}개', unmapped)
